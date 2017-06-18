@@ -16,6 +16,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import android.net.Uri;
 
 /**
  * Created by hmanr on 17/6/2017.
@@ -33,12 +34,14 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     private final String json_url  = "http://dei.uca.edu.sv/estacionDEI/estacionDeiWebService.php";
     private String line;
     private String response = "";
+    private String gameName;
 
-    public LoadData(Context c, TextView game, TextView desc){
+    public LoadData(Context c, TextView game, TextView desc,String nameGame){
 
         context = c;
         text1=game;
         text2=desc;
+        gameName=nameGame;
     }
 
     @Override
@@ -55,7 +58,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     @Override
     protected String doInBackground(Void... params) {
         Log.d(TAG, "doInBackground:"+response+"");
-        response = enviarjuegosGET("DOTA");
+        response = enviarjuegosGET(gameName);
         pDialog.dismiss();
         return null;
     }
@@ -85,11 +88,9 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                 Log.d(TAG, "enviarjuegosGET: Funciona");
                 InputStream in =new BufferedInputStream(httpCon.getInputStream());
                 BufferedReader read = new BufferedReader(new InputStreamReader(in));
-
                 while ((linea=read.readLine())!=null){
                     result.append(linea);
                 }
-
             }
         }
         catch (Exception e){

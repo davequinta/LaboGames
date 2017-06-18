@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-        <item
-            android:id="@+id/nav_camera"
-            android:title="News" />
     <item
-        android:title="Games"/>
+        android:id="@+id/news"
+        android:title="News" />
     <group android:checkableBehavior="single">
+        <item
+            android:title="Games"/>
         <menu>
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/lol"
             android:icon="@drawable/lolicon"
-            android:title="LLeague of Legends" />
+            android:title="League of Legends" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/dota"
             android:icon="@drawable/dotaicon"
             android:title="DOTA" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/csgo"
             android:icon="@drawable/csgoicon"
             android:title="CSGO" />
         </menu>
@@ -26,11 +27,11 @@
     <item android:title="Users">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/user_settings"
 
                 android:title="Settings" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/favorites"
 
                 android:title="Favorites" />
         </menu>

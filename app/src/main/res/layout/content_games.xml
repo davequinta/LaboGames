@@ -7,7 +7,19 @@
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.quintanilla00025815.labogames.MainActivity"
-    tools:showIn="@layout/app_bar_main">
+    tools:showIn="@layout/app_bar_games">
 
+    <TextView
+        android:id="@+id/gameName"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Texto base"
+        android:textSize="24sp" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/gameDescription"
+        android:textSize="18sp"
+        android:text="Texto base"/>
 </LinearLayout>

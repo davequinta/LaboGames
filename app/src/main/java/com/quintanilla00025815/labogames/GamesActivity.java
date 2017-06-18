@@ -1,42 +1,35 @@
 package com.quintanilla00025815.labogames;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.sax.StartElementListener;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
-import org.json.JSONArray;
-
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.concurrent.ExecutionException;
 
-public class MainActivity extends AppCompatActivity
+public class GamesActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    TextView gameTitle;
+    TextView gameDescription;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_games);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -47,18 +40,22 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        //Instacio las variables de los textos
+        gameTitle = (TextView)findViewById(R.id.gameName);
+        gameDescription = (TextView)findViewById(R.id.gameDescription);
+        String TAG = "GamesActivity";
+        Bundle extras=getIntent().getExtras();
+        String get=extras.getString("namegame");
+        Log.d(TAG, "onCreate: "+get+"");
 
-       /* try {
-            new LoadData(this,gameTitle,gameDescription).execute().get();
+        try {
+            new LoadData(this,gameTitle,gameDescription,get).execute().get();
         }catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException f) {
             f.printStackTrace();
-        }*/
-
-
+        }
     }
-
 
     @Override
     public void onBackPressed() {
@@ -93,6 +90,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
+
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
@@ -100,7 +98,7 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.news) {
 
-        } else if (id == R.id.lol) {
+        }else if (id == R.id.lol) {
             String game="League of Legends";
             Intent intent= new Intent(this,GamesActivity.class);
             intent.putExtra("namegame",game);
@@ -125,4 +123,5 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }
