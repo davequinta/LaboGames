@@ -17,12 +17,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.github.snowdream.android.widget.SmartImage;
+import com.github.snowdream.android.widget.SmartImageView;
+
 import java.util.concurrent.ExecutionException;
 
 public class GamesActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     TextView gameTitle;
     TextView gameDescription;
+    SmartImageView smartImageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,13 +47,14 @@ public class GamesActivity extends AppCompatActivity
         //Instacio las variables de los textos
         gameTitle = (TextView)findViewById(R.id.gameName);
         gameDescription = (TextView)findViewById(R.id.gameDescription);
+        smartImageView = (SmartImageView)findViewById(R.id.gameImg) ;
         String TAG = "GamesActivity";
         Bundle extras=getIntent().getExtras();
         String get=extras.getString("namegame");
         Log.d(TAG, "onCreate: "+get+"");
 
         try {
-            new LoadData(this,gameTitle,gameDescription,get).execute().get();
+            new LoadData(this,gameTitle,gameDescription,smartImageView,get).execute().get();
         }catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException f) {

@@ -22,4 +22,12 @@
         android:id="@+id/gameDescription"
         android:textSize="18sp"
         android:text="Texto base"/>
+
+    <com.github.snowdream.android.widget.SmartImageView
+        android:id="@+id/gameImg"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+
+    />
 </LinearLayout>

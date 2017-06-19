@@ -2,8 +2,11 @@ package com.quintanilla00025815.labogames;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.Rect;
+import android.media.Image;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -14,9 +17,14 @@ import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+
 import android.net.Uri;
+
+import com.github.snowdream.android.widget.SmartImageView;
 
 /**
  * Created by hmanr on 17/6/2017.
@@ -24,25 +32,56 @@ import android.net.Uri;
 
 public class LoadData extends AsyncTask<Void, Void, String> {
 
-        private TextView text1;
-        private TextView text2;
+    //Para el menu juego
+    private TextView game;
+    private TextView description;
+    private SmartImageView imgGame;
+
+    //Para el top juego
+    private TextView name;
+    private TextView nickname;
+    private ImageView img;
+
+    //Arreglos para el top
+    private ArrayList sname;
+    private ArrayList snickname;
+    private ArrayList simg;
+
+    //Para la img del juego
+    private ImageView gamesimg;
 
     static final String TAG = "LoadData";
     private Context context;
     private ProgressDialog pDialog;
 
-    private final String json_url  = "http://dei.uca.edu.sv/estacionDEI/estacionDeiWebService.php";
+    private final String json_url = "http://dei.uca.edu.sv/estacionDEI/estacionDeiWebService.php";
     private String line;
     private String response = "";
     private String gameName;
 
-    public LoadData(Context c, TextView game, TextView desc,String nameGame){
+    //Constructor para descripcion del juego
+    public LoadData(Context c, TextView namegame, TextView desc,SmartImageView img,String nameGame) {
 
         context = c;
-        text1=game;
-        text2=desc;
-        gameName=nameGame;
+        game = namegame;
+        description = desc;
+        imgGame = img;
+        gameName = nameGame;
     }
+    //Constructor para top jugadores de ese juego
+    /*public LoadData(Context c,TextView player,TextView nplayer,ImageView imgPlayer,String nameGame){
+
+        context = c;
+        name = player;
+        nickname = nplayer;
+        img = imgPlayer;
+        gameName = nameGame;
+    }*/
+   /* public LoadData(Context c,SmartImageView img){
+        context =c;
+        imgGame = img;
+    }*/
+
 
     @Override
     protected void onPreExecute(){
@@ -64,8 +103,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     }
 
     @Override
-    protected void onPostExecute(String result) {
-        getdataJSON(response);
+    protected void onPostExecute(String result) {getGameDescriptionJSON(response);
     }
 
     //La funcion que envia el formato json
@@ -111,16 +149,29 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         return res;
     }
 
-    public void getdataJSON(String jsoncad){
+    public void getGameDescriptionJSON(String jsoncad){
         try{
             //convirtiendo json string a json object
             JSONObject jsonObj = new JSONObject(jsoncad);
-            text1.setText(jsonObj.getString("title"));
-            text2.setText(jsonObj.getString("description"));
+            game.setText(jsonObj.getString("title"));
+            description.setText(jsonObj.getString("description"));
+
+            Rect rect =new Rect(imgGame.getLeft(),imgGame.getTop(),imgGame.getRight(),imgGame.getBottom());
+            String url ="http://192.168.0.13/WebServer/Imagenes/games_icons/"+jsonObj.getString("img")+"";
+
+            imgGame.setImageUrl(url,rect);
         }
         catch (JSONException e) {
             e.printStackTrace();
             Log.e(TAG,"formato de json incorrecto");
         }
     }
+    /*public void getTopJson(String jsoncad){
+        JSONObject jsonObj =new JSONObject(jsoncad);
+        JSONArray json = new JSONArray();
+        for (int i=0;i<json.length();i++){
+            sname.add(jsonObj.getJSONObject(i).getString("nomJugador"));
+        }
+
+    }*/
     }
