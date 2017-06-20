@@ -11,4 +11,6 @@
     <string name="title_activity_games">GamesActivity</string>
     <string name="title_activity_tabbed_games">TabbedGames</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_juego_list">Juegos</string>
+    <string name="title_juego_detail">Juego Detail</string>
 </resources>
