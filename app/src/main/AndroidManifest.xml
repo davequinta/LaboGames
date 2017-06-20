@@ -25,6 +25,10 @@
         <activity
             android:name=".GamesActivity"
             android:label="@string/title_activity_games"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".TabbedGames"
+            android:label="@string/title_activity_tabbed_games"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

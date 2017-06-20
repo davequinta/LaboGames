@@ -114,7 +114,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         int respuesta = 0;
         Log.d(TAG, "enviarjuegosGET: Todo cool "+namegame+"");
         try {
-            uri = new URL("http://192.168.0.13/WebServer/informacionjuego.php?namegame="+namegame+"");
+            uri = new URL("http://192.168.1.13/WebServer/informacionjuego.php?namegame="+namegame+"");
             HttpURLConnection httpCon = (HttpURLConnection)uri.openConnection();
             httpCon.setReadTimeout(20000);
             httpCon.setConnectTimeout(20000);
@@ -157,7 +157,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
             description.setText(jsonObj.getString("description"));
 
             Rect rect =new Rect(imgGame.getLeft(),imgGame.getTop(),imgGame.getRight(),imgGame.getBottom());
-            String url ="http://192.168.0.13/WebServer/Imagenes/games_icons/"+jsonObj.getString("img")+"";
+            String url ="http://192.168.1.13/WebServer/Imagenes/games_icons/"+jsonObj.getString("img")+"";
 
             imgGame.setImageUrl(url,rect);
         }
