@@ -38,6 +38,11 @@
             android:name=".LogReg.Register"
             android:label="Register"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".LogReg.SuccessActivity"
+            android:label="SuccesActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
 
     </application>
 
