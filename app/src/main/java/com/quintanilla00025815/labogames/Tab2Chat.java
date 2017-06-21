@@ -47,10 +47,9 @@ public class Tab2Chat extends Fragment{
 
         listaPlayersAdaptador = new PlayersAdapter(this.getContext(), pList);
         //Relacionando la lista con el adaptador
-        listaPlayers.setAdapter(listaPlayersAdaptador);
 
         try {
-            new LoadData(this.getContext(),data,player).execute().get();
+            new LoadData(this.getContext(),listaPlayersAdaptador,listaPlayers,data,player).execute().get();
         }catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException f) {

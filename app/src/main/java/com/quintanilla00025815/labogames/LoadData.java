@@ -7,6 +7,7 @@ import android.media.Image;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -38,9 +39,8 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     private SmartImageView imgGame;
 
     //Para el top juego
-    private TextView name;
-    private TextView nickname;
-    private ImageView img;
+    PlayersAdapter adapter;
+    ListView list;
 
     //Arreglos para el top
     private ArrayList sname;
@@ -101,9 +101,11 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         gameName = nameGame;
         parameter = condition;
     }*/
-    public LoadData(Context c,String namegame, String condition){
+    public LoadData(Context c,PlayersAdapter adaptador,ListView lista,String game, String condition){
         context = c;
-        gameName=namegame;
+        gameName=game;
+        adapter=adaptador;
+        list=lista;
         parameter=condition;
     }
    /* public LoadData(Context c,SmartImageView img){
@@ -232,7 +234,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         }
     }
     //Funcion para la lista de jugadores
-    public ArrayList<Player> getTopPlayers(String jsoncad) throws JSONException {
+    public void getTopPlayers(String jsoncad) throws JSONException {
 
         JSONArray jsonArr = new JSONArray(jsoncad);
         Log.d(TAG, "ArrayJson:"+jsonArr+"");
@@ -240,7 +242,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         for (int i=0;i<jsonArr.length();i++){
             jugadores.add(new Player(jsonArr.getJSONObject(i).getInt("idJugador"),
                     jsonArr.getJSONObject(i).getString("nomJugador"),
-                    jsonArr.getJSONObject(i).getString("imgJugador"),
+                    url_images_players+jsonArr.getJSONObject(i).getString("imgJugador"),
                     jsonArr.getJSONObject(i).getString("nickname")));
 
 
@@ -251,9 +253,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
 
         }
        // Log.d(TAG, "getTopPlayers: "+jugadores.get(0)+"");
-
-
-        return jugadores;
+        list.setAdapter(adapter);
     }
 
 
