@@ -28,11 +28,14 @@ public class Tab1Contacts extends  Fragment{
         View rootView = inflater.inflate(R.layout.tab1_contacts, container, false);
 
         String data=getArguments().getString("namegame");
+        //La condicion para loaddata
+        String condition = "game";
         title=(TextView)rootView.findViewById(R.id.gameName);
         desc=(TextView)rootView.findViewById(R.id.gameDescription);
         image=(SmartImageView)rootView.findViewById(R.id.gameImg);
+
         try {
-            new LoadData(this.getContext(),title,desc,image,data).execute().get();
+            new LoadData(this.getContext(),title,desc,image,data,condition).execute().get();
         }catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException f) {

@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity
 
 
         } else if (id == R.id.lol) {
-            String game="League of Legends";
+            String game="League%20of%20Legends";
             Intent intent= new Intent(this,TabbedGames.class);
             intent.putExtra("namegame",game);
             startActivity(intent);

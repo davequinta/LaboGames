@@ -54,30 +54,58 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     private Context context;
     private ProgressDialog pDialog;
 
-    private final String json_url = "http://dei.uca.edu.sv/estacionDEI/estacionDeiWebService.php";
     private String line;
     private String response = "";
     private String gameName;
+    private String parameter;
+
+    //Arreglo de jugadores
+
+    ArrayList<Player> jugadores = new ArrayList<>();
+
+    String ip ="10.45.12.48";
+
+
+    //URLS para acceder a Webserver
+    String url_images_games="http://"+ip+"/WebServer/imagenes/games_icons/";
+    String url_images_players="http://"+ip+"/WebServer/imagenes/players_img/";
+    String url_images_lol="http://"+ip+"/WebServer/imagenes/Lol_img/";
+    String url_images_dota="http://"+ip+"/WebServer/imagenes/Dota_img/";
+    String url_images_csgo="http://"+ip+"/WebServer/imagenes/CSGO_img/";
+
+    //URLS para acceder a php
+    String url_game="http://"+ip+"/WebServer/informacionjuego.php?namegame=";
+    String url_players="http://"+ip+"/WebServer/jugadoresjuego.php?namegame=";
+    String url_images="http://"+ip+"/WebServer/imagenesjuego.php?namegame=";
+    String url_news="http://"+ip+"/WebServer/noticiasjuego.php";
+
 
     //Constructor para descripcion del juego
-    public LoadData(Context c, TextView namegame, TextView desc,SmartImageView img,String nameGame) {
+    public LoadData(Context c, TextView namegame, TextView desc,SmartImageView img,String nameGame,String condition) {
 
         context = c;
         game = namegame;
         description = desc;
         imgGame = img;
         gameName = nameGame;
+        parameter = condition;
     }
     public LoadData(){}
     //Constructor para top jugadores de ese juego
-    /*public LoadData(Context c,TextView player,TextView nplayer,ImageView imgPlayer,String nameGame){
+   //* public LoadData(Context c,String nameGame,String condition){
 
-        context = c;
+        /*context = c;
         name = player;
         nickname = nplayer;
         img = imgPlayer;
         gameName = nameGame;
+        parameter = condition;
     }*/
+    public LoadData(Context c,String namegame, String condition){
+        context = c;
+        gameName=namegame;
+        parameter=condition;
+    }
    /* public LoadData(Context c,SmartImageView img){
         context =c;
         imgGame = img;
@@ -99,25 +127,59 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     protected String doInBackground(Void... params) {
 
         Log.d(TAG, "doInBackground:"+response+"");
-        response = enviarjuegosGET(gameName);
+
+        switch (parameter){
+            case "game":
+                response = enviarjuegosGET(gameName,url_game,parameter);
+                break;
+            case "player":
+                response = enviarjuegosGET(gameName,url_players,parameter);
+                break;
+            case "images":
+                response = enviarjuegosGET(gameName,url_images,parameter);
+                break;
+            case "news":
+                response = enviarjuegosGET(gameName,url_news,parameter);
+        }
         pDialog.dismiss();
         return null;
     }
 
     @Override
     protected void onPostExecute(String result) {
-        getGameDescriptionJSON(response);
+        //getGameDescriptionJSON(response);
+
+        switch (parameter){
+            case "game":
+                getGameDescriptionJSON(response);
+                break;
+            case "player":
+                try {
+                    getTopPlayers(response);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                break;
+        }
+
     }
 
     //La funcion que envia el formato json
-    public String enviarjuegosGET(String namegame){
+    public String enviarjuegosGET(String namegame,String url,String parameter){
         URL uri = null;
+        String parametro = parameter;
         String linea ="";
         StringBuilder result = null;
         int respuesta = 0;
         Log.d(TAG, "enviarjuegosGET: Todo cool "+namegame+"");
         try {
-            uri = new URL("http://192.168.0.19/WebServer/informacionjuego.php?namegame="+namegame+"");
+            if (parametro.equals("news")){
+                uri = new URL(url);
+            }
+            else {
+                uri = new URL(url+namegame+"");
+            }
+            Log.d(TAG, "enviarjuegosGET: "+uri+"");
             HttpURLConnection httpCon = (HttpURLConnection)uri.openConnection();
             httpCon.setReadTimeout(20000);
             httpCon.setConnectTimeout(20000);
@@ -151,7 +213,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         }catch (Exception e){}
         return res;
     }
-
+    //Funcion para la descripcion del juego
     public void getGameDescriptionJSON(String jsoncad){
         try{
             //convirtiendo json string a json object
@@ -160,7 +222,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
             description.setText(jsonObj.getString("description"));
 
             Rect rect =new Rect(imgGame.getLeft(),imgGame.getTop(),imgGame.getRight(),imgGame.getBottom());
-            String url ="http://192.168.0.19/WebServer/Imagenes/games_icons/"+jsonObj.getString("img")+"";
+            String url =url_images_games+jsonObj.getString("img")+"";
 
             imgGame.setImageUrl(url,rect);
         }
@@ -169,6 +231,31 @@ public class LoadData extends AsyncTask<Void, Void, String> {
             Log.e(TAG,"formato de json incorrecto");
         }
     }
+    //Funcion para la lista de jugadores
+    public ArrayList<Player> getTopPlayers(String jsoncad) throws JSONException {
+
+        JSONArray jsonArr = new JSONArray(jsoncad);
+        Log.d(TAG, "ArrayJson:"+jsonArr+"");
+        Log.d(TAG, "Posc1:"+jsonArr.getJSONObject(0).getInt("idJugador")+"");
+        for (int i=0;i<jsonArr.length();i++){
+            jugadores.add(new Player(jsonArr.getJSONObject(i).getInt("idJugador"),
+                    jsonArr.getJSONObject(i).getString("nomJugador"),
+                    jsonArr.getJSONObject(i).getString("imgJugador"),
+                    jsonArr.getJSONObject(i).getString("nickname")));
+
+
+            Log.d(TAG, "getTopPlayers: "+jugadores.get(i).getIdJugador()+"");
+            Log.d(TAG, "getTopPlayers: "+jugadores.get(i).getImgJugador()+"");
+            Log.d(TAG, "getTopPlayers: "+jugadores.get(i).getNikcname()+"");
+            Log.d(TAG, "getTopPlayers: "+jugadores.get(i).getNomJugador()+"");
+
+        }
+       // Log.d(TAG, "getTopPlayers: "+jugadores.get(0)+"");
+
+
+        return jugadores;
+    }
+
 
     public String prueba(){
         String comentario="Se mega va";

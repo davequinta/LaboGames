@@ -52,14 +52,14 @@ public class GamesActivity extends AppCompatActivity
         Bundle extras=getIntent().getExtras();
         String get=extras.getString("namegame");
         Log.d(TAG, "onCreate: "+get+"");
-
+        /*
         try {
             new LoadData(this,gameTitle,gameDescription,smartImageView,get).execute().get();
         }catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException f) {
             f.printStackTrace();
-        }
+        }*/
     }
 
     @Override

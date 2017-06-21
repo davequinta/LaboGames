@@ -130,8 +130,10 @@ public class TabbedGames extends AppCompatActivity implements NavigationView.OnN
                     tab1.setArguments(extras);
                     return tab1;
                 case 1:
-
                     Tab2Chat tab2= new Tab2Chat();
+                    Bundle extras2=getIntent().getExtras();
+                    String get2=extras2.getString("namegame");
+                    tab2.setArguments(extras2);
                     return tab2;
 
 
@@ -172,7 +174,7 @@ public class TabbedGames extends AppCompatActivity implements NavigationView.OnN
 
 
         } else if (id == R.id.lol) {
-            String game="League of Legends";
+            String game="League%20of%20Legends";
             Intent intent= new Intent(this,TabbedGames.class);
             intent.putExtra("namegame",game);
             startActivity(intent);

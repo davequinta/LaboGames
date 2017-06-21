@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.github.snowdream.android.widget.SmartImageView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +20,12 @@ import java.util.List;
  */
 
 public class PlayersAdapter extends ArrayAdapter<Player> {
+
+
+    ArrayList<Player> jugador;
+    String ip ="10.45.12.48";
+    String url_players="http://"+ip+"/WebServer/jugadoresjuego.php?namegame=";
+
     public PlayersAdapter(Context context,  List<Player> objects) {
 
         super(context, 0, objects);
@@ -36,14 +44,15 @@ public class PlayersAdapter extends ArrayAdapter<Player> {
         }
 
         //referencias de vistas de list_item_friend.xml
-        ImageView avatar = (ImageView) convertView.findViewById(R.id.img);
+        SmartImageView avatar = (SmartImageView) convertView.findViewById(R.id.img);
         TextView name = (TextView) convertView.findViewById(R.id.Name);
         TextView msg = (TextView) convertView.findViewById(R.id.lastMsg);
         //TextView date = (TextView) convertView.findViewById(R.id.date);
 
         Player p= getItem(position);
 
-        avatar.setImageResource(p.getImgJugador());
+        //avatar.setImageResource(p.getImgJugador());
+
         name.setText(p.getNikcname());
         msg.setText(p.getNomJugador());
 

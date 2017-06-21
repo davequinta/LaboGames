@@ -7,10 +7,10 @@ package com.quintanilla00025815.labogames;
 public class Player {
     private int idJugador;
     private String nomJugador;
-    private int imgJugador;
+    private String imgJugador;
     private String nikcname;
 
-    public Player(int idJugador, String nomJugador, int imgJugador, String nikcname) {
+    public Player(int idJugador, String nomJugador,String imgJugador, String nikcname) {
         this.idJugador = idJugador;
         this.nomJugador = nomJugador;
         this.imgJugador = imgJugador;
@@ -33,11 +33,11 @@ public class Player {
         this.nomJugador = nomJugador;
     }
 
-    public int getImgJugador() {
+    public String getImgJugador() {
         return imgJugador;
     }
 
-    public void setImgJugador(int imgJugador) {
+    public void setImgJugador(String imgJugador) {
         this.imgJugador = imgJugador;
     }
 
