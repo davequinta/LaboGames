@@ -9,5 +9,12 @@
     tools:context="com.quintanilla00025815.labogames.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/prueba"
+        android:text="Hola mundo"
+        android:textSize="24sp"/>
+
 
 </LinearLayout>

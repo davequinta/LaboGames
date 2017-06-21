@@ -68,6 +68,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         imgGame = img;
         gameName = nameGame;
     }
+    public LoadData(){}
     //Constructor para top jugadores de ese juego
     /*public LoadData(Context c,TextView player,TextView nplayer,ImageView imgPlayer,String nameGame){
 
@@ -96,6 +97,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
 
     @Override
     protected String doInBackground(Void... params) {
+
         Log.d(TAG, "doInBackground:"+response+"");
         response = enviarjuegosGET(gameName);
         pDialog.dismiss();
@@ -103,7 +105,8 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     }
 
     @Override
-    protected void onPostExecute(String result) {getGameDescriptionJSON(response);
+    protected void onPostExecute(String result) {
+        getGameDescriptionJSON(response);
     }
 
     //La funcion que envia el formato json
@@ -114,7 +117,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         int respuesta = 0;
         Log.d(TAG, "enviarjuegosGET: Todo cool "+namegame+"");
         try {
-            uri = new URL("http://192.168.1.13/WebServer/informacionjuego.php?namegame="+namegame+"");
+            uri = new URL("http://192.168.0.19/WebServer/informacionjuego.php?namegame="+namegame+"");
             HttpURLConnection httpCon = (HttpURLConnection)uri.openConnection();
             httpCon.setReadTimeout(20000);
             httpCon.setConnectTimeout(20000);
@@ -157,7 +160,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
             description.setText(jsonObj.getString("description"));
 
             Rect rect =new Rect(imgGame.getLeft(),imgGame.getTop(),imgGame.getRight(),imgGame.getBottom());
-            String url ="http://192.168.1.13/WebServer/Imagenes/games_icons/"+jsonObj.getString("img")+"";
+            String url ="http://192.168.0.19/WebServer/Imagenes/games_icons/"+jsonObj.getString("img")+"";
 
             imgGame.setImageUrl(url,rect);
         }
@@ -165,6 +168,11 @@ public class LoadData extends AsyncTask<Void, Void, String> {
             e.printStackTrace();
             Log.e(TAG,"formato de json incorrecto");
         }
+    }
+
+    public String prueba(){
+        String comentario="Se mega va";
+        return comentario;
     }
     /*public void getTopJson(String jsoncad){
         JSONObject jsonObj =new JSONObject(jsoncad);

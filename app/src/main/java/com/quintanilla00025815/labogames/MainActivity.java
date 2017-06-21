@@ -6,6 +6,7 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -30,6 +31,7 @@ import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    TextView text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +49,15 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        text=(TextView)findViewById(R.id.prueba);
+        String TAG="Main activity";
 
-       /* try {
-            new LoadData(this,gameTitle,gameDescription).execute().get();
+/*
+         try {
+           LoadData load= new LoadData();
+             String name=load.execute().get();
+             Log.d(TAG, "onCreate: "+name+"");
+             text.setText(name);
         }catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException f) {
@@ -99,32 +107,23 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.news) {
-           
+
 
         } else if (id == R.id.lol) {
-            /*String game="League of Legends";
-            Intent intent= new Intent(this,GamesActivity.class);
-            intent.putExtra("namegame",game);
-            startActivity(intent);*/
+            String game="League of Legends";
             Intent intent= new Intent(this,TabbedGames.class);
+            intent.putExtra("namegame",game);
             startActivity(intent);
         } else if (id == R.id.dota) {
-            /*String game="DOTA";
-            Intent intent= new Intent(this,GamesActivity.class);
-            intent.putExtra("namegame",game);
-            startActivity(intent);*/
+            String game="DOTA";
             Intent intent= new Intent(this,TabbedGames.class);
+            intent.putExtra("namegame",game);
             startActivity(intent);
         } else if (id == R.id.csgo) {
-            /*
             String game="Counter Strike Go";
-            Intent intent= new Intent(this,GamesActivity.class);
+            Intent intent= new Intent(this,TabbedGames.class);
             intent.putExtra("namegame",game);
             startActivity(intent);
-            */
-            Intent intent= new Intent(this,TabbedGames.class);
-            startActivity(intent);
-
         } else if (id == R.id.action_settings) {
 
         } else if (id == R.id.favorites) {

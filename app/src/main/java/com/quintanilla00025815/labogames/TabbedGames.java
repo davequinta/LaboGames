@@ -125,6 +125,9 @@ public class TabbedGames extends AppCompatActivity implements NavigationView.OnN
             switch (position) {
                 case 0:
                     Tab1Contacts tab1= new Tab1Contacts();
+                    Bundle extras=getIntent().getExtras();
+                    String get=extras.getString("namegame");
+                    tab1.setArguments(extras);
                     return tab1;
                 case 1:
 
@@ -170,24 +173,19 @@ public class TabbedGames extends AppCompatActivity implements NavigationView.OnN
 
         } else if (id == R.id.lol) {
             String game="League of Legends";
-            Intent intent= new Intent(this,GamesActivity.class);
+            Intent intent= new Intent(this,TabbedGames.class);
             intent.putExtra("namegame",game);
             startActivity(intent);
         } else if (id == R.id.dota) {
             String game="DOTA";
-            Intent intent= new Intent(this,GamesActivity.class);
+            Intent intent= new Intent(this,TabbedGames.class);
             intent.putExtra("namegame",game);
             startActivity(intent);
         } else if (id == R.id.csgo) {
-            /*
             String game="Counter Strike Go";
-            Intent intent= new Intent(this,GamesActivity.class);
+            Intent intent= new Intent(this,TabbedGames.class);
             intent.putExtra("namegame",game);
             startActivity(intent);
-            */
-            Intent intent= new Intent(this,TabbedGames.class);
-            startActivity(intent);
-
         } else if (id == R.id.action_settings) {
 
         } else if (id == R.id.favorites) {
