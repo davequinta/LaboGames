@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.quintanilla00025815.labogames.TabbedGames">
+    tools:context="com.quintanilla00025815.labogames.TabbedGames"
+    tools:showIn="@layout/app_bar_games">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"

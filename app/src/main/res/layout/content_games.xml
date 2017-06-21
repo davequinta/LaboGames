@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.quintanilla00025815.labogames.MainActivity"
-    tools:showIn="@layout/app_bar_games">
+    tools:context="com.quintanilla00025815.labogames.MainActivity">
 
     <TextView
         android:id="@+id/gameName"

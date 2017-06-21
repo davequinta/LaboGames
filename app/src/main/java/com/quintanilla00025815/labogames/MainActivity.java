@@ -102,14 +102,18 @@ public class MainActivity extends AppCompatActivity
            
 
         } else if (id == R.id.lol) {
-            String game="League of Legends";
+            /*String game="League of Legends";
             Intent intent= new Intent(this,GamesActivity.class);
             intent.putExtra("namegame",game);
+            startActivity(intent);*/
+            Intent intent= new Intent(this,TabbedGames.class);
             startActivity(intent);
         } else if (id == R.id.dota) {
-            String game="DOTA";
+            /*String game="DOTA";
             Intent intent= new Intent(this,GamesActivity.class);
             intent.putExtra("namegame",game);
+            startActivity(intent);*/
+            Intent intent= new Intent(this,TabbedGames.class);
             startActivity(intent);
         } else if (id == R.id.csgo) {
             /*
