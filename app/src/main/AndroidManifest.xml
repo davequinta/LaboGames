@@ -30,6 +30,14 @@
             android:name=".TabbedGames"
             android:label="@string/title_activity_tabbed_games"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".LogReg.Login"
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".LogReg.Register"
+            android:label="Register"
+            android:theme="@style/AppTheme.NoActionBar" />
 
     </application>
 

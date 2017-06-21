@@ -17,6 +17,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.quintanilla00025815.labogames.LogReg.Login;
+
 import org.json.JSONArray;
 
 import java.io.BufferedInputStream;
@@ -120,7 +122,8 @@ public class MainActivity extends AppCompatActivity
             intent.putExtra("namegame",game);
             startActivity(intent);
         } else if (id == R.id.user_settings) {
-
+            Intent intent= new Intent(this, Login.class);
+            startActivity(intent);
         } else if (id == R.id.favorites) {
 
         }

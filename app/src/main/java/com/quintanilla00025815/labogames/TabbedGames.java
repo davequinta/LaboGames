@@ -24,6 +24,8 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+import com.quintanilla00025815.labogames.LogReg.Login;
+
 public class TabbedGames extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener  {
 
     /**
@@ -188,8 +190,9 @@ public class TabbedGames extends AppCompatActivity implements NavigationView.OnN
             Intent intent= new Intent(this,TabbedGames.class);
             startActivity(intent);
 
-        } else if (id == R.id.action_settings) {
-
+        } else if (id == R.id.user_settings) {
+            Intent intent= new Intent(this, Login.class);
+            startActivity(intent);
         } else if (id == R.id.favorites) {
 
         }
