@@ -140,6 +140,9 @@ public class TabbedGames extends AppCompatActivity implements NavigationView.OnN
 
                 case 2:
                     Tab3Online tab3= new Tab3Online();
+                    Bundle extras3 = getIntent().getExtras();
+                    String get3 = extras3.getString("namegame");
+                    tab3.setArguments(extras3);
                     return tab3;
             }
             return null;

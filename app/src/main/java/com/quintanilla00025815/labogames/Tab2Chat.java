@@ -45,7 +45,6 @@ public class Tab2Chat extends Fragment{
 */      String player="player";
         String data=getArguments().getString("namegame");
 
-        listaPlayersAdaptador = new PlayersAdapter(this.getContext(), pList);
         //Relacionando la lista con el adaptador
 
         try {

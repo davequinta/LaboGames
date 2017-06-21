@@ -7,13 +7,12 @@ package com.quintanilla00025815.labogames;
 public class ImagesJuego {
     private int idImg;
     private String url;
-    private int idJuego;
+    private int idjuego;
 
 
-    public ImagesJuego(int idImg, String url, int idJuego) {
+    public ImagesJuego(int idImg, String url) {
         this.idImg = idImg;
         this.url = url;
-        this.idJuego = idJuego;
     }
 
     public int getIdImg() {
@@ -33,10 +32,10 @@ public class ImagesJuego {
     }
 
     public int getIdJuego() {
-        return idJuego;
+        return idjuego;
     }
 
     public void setIdJuego(int idJuego) {
-        this.idJuego = idJuego;
+        this.idjuego = idJuego;
     }
 }

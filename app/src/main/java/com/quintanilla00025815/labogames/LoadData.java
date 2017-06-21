@@ -6,6 +6,7 @@ import android.graphics.Rect;
 import android.media.Image;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -42,6 +43,10 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     PlayersAdapter adapter;
     ListView list;
 
+    //Para imagenes
+    GridAdapter adapter2;
+    GridView list2;
+
     //Arreglos para el top
     private ArrayList sname;
     private ArrayList snickname;
@@ -62,6 +67,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     //Arreglo de jugadores
 
     ArrayList<Player> jugadores = new ArrayList<>();
+    ArrayList<ImagesJuego> images = new ArrayList<>();
 
     String ip ="10.45.12.48";
 
@@ -72,6 +78,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     String url_images_lol="http://"+ip+"/WebServer/imagenes/Lol_img/";
     String url_images_dota="http://"+ip+"/WebServer/imagenes/Dota_img/";
     String url_images_csgo="http://"+ip+"/WebServer/imagenes/CSGO_img/";
+    String url_images_games2="http://"+ip+"/WebServer/imagenes/games_images/";
 
     //URLS para acceder a php
     String url_game="http://"+ip+"/WebServer/informacionjuego.php?namegame=";
@@ -101,11 +108,18 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         gameName = nameGame;
         parameter = condition;
     }*/
-    public LoadData(Context c,PlayersAdapter adaptador,ListView lista,String game, String condition){
+    public LoadData(Context c, PlayersAdapter adaptador,ListView lista, String game, String condition){
         context = c;
         gameName=game;
         adapter=adaptador;
         list=lista;
+        parameter=condition;
+    }
+    public LoadData(Context c,GridAdapter adaptador,GridView lista,String game, String condition){
+        context = c;
+        gameName=game;
+        adapter2=adaptador;
+        list2=lista;
         parameter=condition;
     }
    /* public LoadData(Context c,SmartImageView img){
@@ -162,9 +176,17 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                     e.printStackTrace();
                 }
                 break;
+            case "images":
+                try {
+                    getGameImages(response);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                break;
         }
 
     }
+
 
     //La funcion que envia el formato json
     public String enviarjuegosGET(String namegame,String url,String parameter){
@@ -253,20 +275,24 @@ public class LoadData extends AsyncTask<Void, Void, String> {
 
         }
        // Log.d(TAG, "getTopPlayers: "+jugadores.get(0)+"");
+        adapter = new PlayersAdapter(context,jugadores);
         list.setAdapter(adapter);
     }
 
+    private void getGameImages(String jsoncad) throws JSONException {
+        JSONArray jsonArr = new JSONArray(jsoncad);
+        Log.d(TAG, "getGameImages: Entra"+jsonArr+"");
 
-    public String prueba(){
-        String comentario="Se mega va";
-        return comentario;
-    }
-    /*public void getTopJson(String jsoncad){
-        JSONObject jsonObj =new JSONObject(jsoncad);
-        JSONArray json = new JSONArray();
-        for (int i=0;i<json.length();i++){
-            sname.add(jsonObj.getJSONObject(i).getString("nomJugador"));
+        Log.d("matus", "Posc1:"+jsonArr.getJSONObject(0).getInt("idjuego")+"");
+        for (int i=0;i<jsonArr.length();i++){
+            images.add(new ImagesJuego(jsonArr.getJSONObject(i).getInt("idImg"),
+                    url_images_games2+jsonArr.getJSONObject(i).getString("url")));
+
+            Log.d("Prro","getGamesImages: "+images.get(i).getIdImg()+"");
+            Log.d("Prro","getGamesImages: "+images.get(i).getUrl()+"");
         }
+        adapter2 = new GridAdapter(context,images);
+        list2.setAdapter(adapter2);
 
-    }*/
     }
+}
