@@ -99,7 +99,6 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.news) {
-           
 
         } else if (id == R.id.lol) {
             /*String game="League of Legends";
@@ -116,16 +115,11 @@ public class MainActivity extends AppCompatActivity
             Intent intent= new Intent(this,TabbedGames.class);
             startActivity(intent);
         } else if (id == R.id.csgo) {
-            /*
             String game="Counter Strike Go";
             Intent intent= new Intent(this,GamesActivity.class);
             intent.putExtra("namegame",game);
             startActivity(intent);
-            */
-            Intent intent= new Intent(this,TabbedGames.class);
-            startActivity(intent);
-
-        } else if (id == R.id.action_settings) {
+        } else if (id == R.id.user_settings) {
 
         } else if (id == R.id.favorites) {
 
