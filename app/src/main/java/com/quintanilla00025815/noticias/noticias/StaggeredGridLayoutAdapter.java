@@ -118,6 +118,19 @@ public class StaggeredGridLayoutAdapter extends CustomRecyclerViewAdapter {
         */
         myHolder.title.setText(noticias.get(position).getTitulo());
         myHolder.subtitle.setText((noticias.get(position).getSubtitulo()));
+        setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                NoticiasClass articulo = noticias.get(position);
+                Intent intent = new Intent(activity,News.class);
+                intent.putExtra(TITULO,articulo.getTitulo());
+                intent.putExtra(SUBTITULO,articulo.getSubtitulo());
+                intent.putExtra(DESC, articulo.getDescNoticia());
+                intent.putExtra(IMG,articulo.getImgNoticia());
+                activity.startActivity(intent);
+            }
+        });
+        
     }
 
 
