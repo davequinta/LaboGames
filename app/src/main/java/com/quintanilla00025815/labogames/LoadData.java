@@ -70,7 +70,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     ArrayList<ImagesJuego> images = new ArrayList<>();
 
     //String ip ="10.45.12.48";
-    String ip = "localhost";
+    String ip = "192.168.1.3";
 
     //URLS para acceder a Webserver
     String url_images_games="http://"+ip+"/WebServer/imagenes/games_icons/";
@@ -283,15 +283,15 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         JSONArray jsonArr = new JSONArray(jsoncad);
         Log.d(TAG, "getGameImages: Entra"+jsonArr+"");
 
-        Log.d("matus", "Posc1:"+jsonArr.getJSONObject(0).getInt("idjuego")+"");
+        Log.d("matus", "getGamesURL:"+jsonArr.getJSONObject(0).getString("url")+"");
         for (int i=0;i<jsonArr.length();i++){
-            images.add(new ImagesJuego(jsonArr.getJSONObject(i).getInt("idImg"),
+            images.add(new ImagesJuego(
                     url_images_games2+jsonArr.getJSONObject(i).getString("url")));
 
-            Log.d("Prro","getGamesImages: "+images.get(i).getIdImg()+"");
+
             Log.d("Prro","getGamesImages: "+images.get(i).getUrl()+"");
         }
-        adapter2 = new GridAdapter(context,images);
+        adapter2 = new GridAdapter(context,R.layout.grid_view_items,images);
         list2.setAdapter(adapter2);
 
     }

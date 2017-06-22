@@ -16,6 +16,7 @@ public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickLis
     ItemClickListener itemClickListener;
     public MyHolder(View itemView) {
         super(itemView);
+        /*
        tituloTxt= (TextView) itemView.findViewById(R.id.titulotxt);
         subtituloTxt= (TextView) itemView.findViewById(R.id.subtitulotxt);
         imgNoticiaTxt= (TextView) itemView.findViewById(R.id.imgnoticiatxt);
@@ -23,6 +24,7 @@ public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickLis
         idJuegoTxt= (TextView) itemView.findViewById(R.id.idjuegotxt);
         descNoticiaTxt= (TextView) itemView.findViewById(R.id.descNoticiatxt);
         itemView.setOnClickListener(this);
+        */
     }
     public  void setItemClickListener(ItemClickListener ic)
     {
