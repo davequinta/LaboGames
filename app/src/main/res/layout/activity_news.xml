@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:scrollbarAlwaysDrawVerticalTrack="true"
+    android:isScrollContainer="true">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:id="@+id/NewsImg"
+        android:padding="8dp"
+        android:layout_gravity="top"
+        tools:src="@drawable/kennen"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/NewsTitle"
+        android:textAllCaps="true"
+        android:textColor="#B71C1C"
+        tools:text="Ya casi terminamos los talleres :O"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="5dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/NewsSubtitle"
+        android:textColor="@color/colorAccent"
+        tools:text="Aún nos faltan algunos detalles pero ya casi terminamos todo lo que hay que hacer"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="8dp"
+        android:textSize="20sp"
+        android:textAllCaps="true"/>
+
+    <TextView
+        android:id="@+id/NewsDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        tools:text="Aqui va un gran monton de texto que realmente me da huva escribir pero quiero ver como se veria realmente en una noticia cuando defendamos el proyecto. \nVoy a escribir un parrafo mas pero ya no quiero asi que empezare a escribir solo letras juntas sin sentido khfsiduf hfisdkjf nvjkv erqeoruehfs hfusi jfoisdgh r husdivs oskfjoisrg sbdgjkbsdkjgob oeiwhiewh dsgjksd psofweoiw ujgsdk ujiu uiefhsdv skvvsfaas assws "
+        android:textSize="17sp"/>
+
+</LinearLayout>
