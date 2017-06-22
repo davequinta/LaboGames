@@ -3,10 +3,14 @@ package com.quintanilla00025815.noticias.noticias;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.quintanilla00025815.labogames.R;
+
+import java.util.ArrayList;
 
 public class NoticiasPrincipal extends AppCompatActivity {
     String url="http://192.168.1.7/WebService/noticias/noticias.php";
