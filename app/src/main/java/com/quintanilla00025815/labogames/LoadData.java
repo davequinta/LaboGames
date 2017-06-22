@@ -69,8 +69,8 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     ArrayList<Player> jugadores = new ArrayList<>();
     ArrayList<ImagesJuego> images = new ArrayList<>();
 
-    String ip ="10.45.12.48";
-
+    //String ip ="10.45.12.48";
+    String ip = "localhost";
 
     //URLS para acceder a Webserver
     String url_images_games="http://"+ip+"/WebServer/imagenes/games_icons/";
