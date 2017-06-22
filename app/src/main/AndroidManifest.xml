@@ -42,6 +42,12 @@
             android:name=".LogReg.SuccessActivity"
             android:label="SuccesActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.quintanilla00025815.noticias.noticias.NoticiasPrincipal"
+            android:label="News"/>
+        <activity
+            android:name="com.quintanilla00025815.noticias.noticias.News"
+            android:label="News"/>
 
 
     </application>
