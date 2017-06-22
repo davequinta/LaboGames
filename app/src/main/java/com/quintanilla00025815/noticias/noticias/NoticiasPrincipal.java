@@ -15,11 +15,17 @@ public class NoticiasPrincipal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_noticias);
         final RecyclerView rv= (RecyclerView) findViewById(R.id.mRecycler);
-        rv.setLayoutManager(new LinearLayoutManager(this));
+        StaggeredGridLayoutManager StaggManager = new StaggeredGridLayoutManager(2, GridLayoutManager.VERTICAL);
+        rv.setLayoutManager(StaggManager);
         rv.setItemAnimator(new DefaultItemAnimator());
-
-                Downloader d=new Downloader(NoticiasPrincipal.this,url,rv);
-                d.execute();
-
+        ArrayList<NoticiasClass> Noticias = new ArrayList<>();
+        
+        /* FALTA LLENAR EL ARREGLO DE NOTICIAS CON LOS DATOS DEL WEBSERVICE  
+        
+        Downloader d=new Downloader(NoticiasPrincipal.this,url,rv);
+        d.execute();
+        
+        */
+        rv.setAdapter(new StaggeredGridLayoutAdapter(this, Noticias));
     }
 }
