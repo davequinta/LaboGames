@@ -169,10 +169,10 @@ public class Login extends AppCompatActivity {
                 editor.putString("nomUsuario", String.valueOf(etEmail));
                 editor.commit();
 
-                Toast.makeText(Login.this, "Logueo Perfecto", Toast.LENGTH_LONG).show();
+                Toast.makeText(Login.this, "Logueo Perfecto", Toast.LENGTH_SHORT).show();
 
 
-                Intent intent = new Intent(Login.this,MainActivity.class);
+                Intent intent = new Intent(Login.this,NoticiasPrincipal.class);
                 startActivity(intent);
                 Login.this.finish();
 

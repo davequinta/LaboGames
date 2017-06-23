@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Point;
+import android.graphics.Rect;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -22,13 +23,14 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.github.snowdream.android.widget.SmartImageView;
 import com.quintanilla00025815.labogames.R;
 
 import java.util.ArrayList;
 
 public class StaggeredGridLayoutAdapter extends CustomRecyclerViewAdapter {
 
-    private Activity activity;
+    private Context activity;
     private ArrayList<NoticiasClass> noticias;
     private int screenWidth;
     private int screenHeight;
@@ -36,7 +38,7 @@ public class StaggeredGridLayoutAdapter extends CustomRecyclerViewAdapter {
     private static final int TYPE_FULL = 0;
     private static final int TYPE_HALF = 1;
 
-    public StaggeredGridLayoutAdapter(Activity activity, ArrayList<NoticiasClass> series) {
+    public StaggeredGridLayoutAdapter(Context activity, ArrayList<NoticiasClass> series) {
         this.activity = activity;
         this.noticias = series;
         WindowManager wm = (WindowManager) activity.getSystemService(Context.WINDOW_SERVICE);
@@ -118,6 +120,8 @@ public class StaggeredGridLayoutAdapter extends CustomRecyclerViewAdapter {
 
 
         */
+        Rect rect =new Rect(myHolder.poster.getLeft(),myHolder.poster.getTop(),myHolder.poster.getRight(),myHolder.poster.getBottom());
+        myHolder.poster.setImageUrl(noticias.get(position).getImgNoticia(),rect);
         myHolder.title.setText(noticias.get(position).getTitulo());
         myHolder.subtitle.setText((noticias.get(position).getSubtitulo()));
         setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -142,14 +146,14 @@ public class StaggeredGridLayoutAdapter extends CustomRecyclerViewAdapter {
     }
 
     public class ViewHolder extends CustomRecycleViewHolder {
-        private ImageView poster;
+        private SmartImageView poster;
         private TextView title;
         private TextView subtitle;
         private CardView cardView;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            poster = (ImageView) itemView.findViewById(R.id.NewsMImg);
+            poster = (SmartImageView) itemView.findViewById(R.id.NewsMImg);
             title = (TextView) itemView.findViewById(R.id.headline);
             subtitle = (TextView) itemView.findViewById(R.id.subtitle);
             cardView = (CardView) itemView.findViewById(R.id.NewsCardView);

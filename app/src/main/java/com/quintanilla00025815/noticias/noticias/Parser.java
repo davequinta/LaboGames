@@ -21,7 +21,7 @@ public class Parser extends AsyncTask<Void,Integer,Integer> {
     RecyclerView rv;
     ProgressDialog pd;
     ArrayList<NoticiasClass> players=new ArrayList<>();
-    MyAdapter adapter;
+    StaggeredGridLayoutAdapter adapter;
     public Parser(Context c, String data, RecyclerView rv) {
         this.c = c;
         this.data = data;
@@ -45,7 +45,7 @@ public class Parser extends AsyncTask<Void,Integer,Integer> {
         pd.dismiss();
         if(integer==1)
         {
-            adapter=new MyAdapter(c,players);
+            adapter=new StaggeredGridLayoutAdapter(c,players);
             rv.setAdapter(adapter);
         }else {
             Toast.makeText(c,"Unable to parse data",Toast.LENGTH_SHORT).show();
@@ -65,7 +65,7 @@ public class Parser extends AsyncTask<Void,Integer,Integer> {
                 String subtitulo=jo.getString("subtitulo");
                 int idNoticia=jo.getInt("idNoticia");
                 int idJuego=jo.getInt("idJuego");
-                String imgNoticia=jo.getString("imgNoticia");
+                String imgNoticia="http://192.168.1.7/WebServer/Imagenes/noticias/"+jo.getString("imgNoticia");
                 String descNoticia=jo.getString("descNoticia");
                 players.add(new NoticiasClass(idNoticia,titulo,subtitulo,imgNoticia,idJuego,descNoticia));
             }

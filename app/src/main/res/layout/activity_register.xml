@@ -46,7 +46,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="84dp" />
 
-    <EditText
+   <!-- <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -55,6 +55,6 @@
         android:layout_alignRight="@+id/etMobile"
         android:layout_alignEnd="@+id/etMobile"
         android:layout_marginTop="59dp"
-        android:hint="Photo" />
+        android:hint="Photo" />-->
 
 </RelativeLayout>

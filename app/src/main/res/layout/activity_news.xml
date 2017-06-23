@@ -13,19 +13,21 @@
         android:padding="8dp"
         android:layout_gravity="top"
         tools:src="@drawable/kennen"/>
+
     <TextView
+        android:id="@+id/NewsTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/NewsTitle"
-        android:textAllCaps="true"
-        android:textColor="#B71C1C"
-        tools:text="Ya casi terminamos los talleres :O"
-        android:textStyle="bold"
-        android:textSize="30sp"
+        android:paddingBottom="5dp"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:paddingTop="15dp"
-        android:paddingBottom="5dp"/>
+        android:textAllCaps="true"
+        android:textColor="#B71C1C"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        tools:text="Ya casi terminamos los talleres :O" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

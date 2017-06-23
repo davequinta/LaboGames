@@ -27,7 +27,7 @@ public class Register extends Activity {
     private HTTPURLConnection service;
     private String strname ="", strMobile ="",strAddress="";
     //Initialize webservice URL
-    private String path = "http://192.168.1.7/WebService/registrar/register.php";
+    private String path = "http://192.168.1.7/WebServer/registrar/register.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class Register extends Activity {
 
         etName= (EditText) findViewById(R.id.etName);
         etMobile= (EditText) findViewById(R.id.etMobile);
-        etAddress= (EditText) findViewById(R.id.etAddress);
+        //etAddress= (EditText) findViewById(R.id.etAddress);
         btnSubmit= (Button) findViewById(R.id.btnSubmit);
 
         //Initialize HTTPURLConnection class object
@@ -47,7 +47,7 @@ public class Register extends Activity {
                 if (!etName.getText().toString().equals("") && !etMobile.getText().toString().equals("")) {
                     strname = etName.getText().toString();
                     strMobile = etMobile.getText().toString();
-                    strAddress = etAddress.getText().toString();
+                    strAddress = "lolicon.png";
                     //Call WebService
                     new PostDataTOServer().execute();
                 } else {
@@ -78,7 +78,7 @@ public class Register extends Activity {
             postDataParams=new HashMap<String, String>();
             postDataParams.put("name", strname);
             postDataParams.put("password", strMobile);
-            postDataParams.put("photo", strAddress);
+            postDataParams.put("photo", "lolicon.png");
             //Call ServerData() method to call webservice and store result in response
             response= service.ServerData(path,postDataParams);
             try {
