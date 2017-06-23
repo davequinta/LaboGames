@@ -42,7 +42,7 @@
         android:layout_below="@+id/button"
         android:layout_marginTop="10dp"
         android:onClick="Regist"/>
-    <Button
+    <!--<Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Ver Noticias"
@@ -50,6 +50,7 @@
         android:layout_below="@+id/button2"
         android:layout_marginTop="10dp"
         android:onClick="notici"/>
+        -->
 
 
 </RelativeLayout>
