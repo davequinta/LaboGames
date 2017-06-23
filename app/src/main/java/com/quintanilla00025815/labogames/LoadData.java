@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Rect;
 import android.media.Image;
 import android.os.AsyncTask;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -27,6 +28,7 @@ import java.util.ArrayList;
 import android.net.Uri;
 
 import com.github.snowdream.android.widget.SmartImageView;
+import com.quintanilla00025815.noticias.noticias.StaggeredGridLayoutAdapter;
 
 /**
  * Created by hmanr on 17/6/2017.
@@ -47,13 +49,14 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     GridAdapter adapter2;
     GridView list2;
 
-    //Arreglos para el top
-    private ArrayList sname;
-    private ArrayList snickname;
-    private ArrayList simg;
+    //Para las noticias
+    StaggeredGridLayoutAdapter sAdapter;
+    RecyclerView rView;
 
     //Para la img del juego
     private ImageView gamesimg;
+
+    //Para la
 
     static final String TAG = "LoadData";
     private Context context;
@@ -124,6 +127,13 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         list2=lista;
         parameter=condition;
     }
+    public LoadData(Context c, StaggeredGridLayoutAdapter adapter, RecyclerView recycler,String game,String condition){
+        context=c;
+        sAdapter=adapter;
+        rView=recycler;
+        gameName=game;
+        parameter=condition;
+    }
    /* public LoadData(Context c,SmartImageView img){
         context =c;
         imgGame = img;
@@ -185,6 +195,12 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                     e.printStackTrace();
                 }
                 break;
+            case "news":
+                try {
+                    getNews(response);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
         }
 
     }
@@ -281,6 +297,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         list.setAdapter(adapter);
     }
 
+    //Funcion para las imagenes de cada juego
     private void getGameImages(String jsoncad) throws JSONException {
         JSONArray jsonArr = new JSONArray(jsoncad);
         Log.d(TAG, "getGameImages: Entra"+jsonArr+"");
@@ -296,5 +313,11 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         adapter2 = new GridAdapter(context,R.layout.grid_view_items,images);
         list2.setAdapter(adapter2);
 
+    }
+
+    //Funcion para las noticias
+    private void getNews(String jsoncad) throws JSONException{
+        JSONArray jsonArr =new JSONArray();
+        Log.d(TAG, "getNews: "+jsonArr+" and "+jsoncad+"");
     }
 }
