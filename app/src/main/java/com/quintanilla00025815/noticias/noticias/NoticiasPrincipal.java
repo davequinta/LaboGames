@@ -27,8 +27,8 @@ public class NoticiasPrincipal extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_noticias);
-       /* Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setContentView(R.layout.activity_news_menu);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -39,7 +39,7 @@ public class NoticiasPrincipal extends AppCompatActivity
 
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);*/
+        navigationView.setNavigationItemSelectedListener(this);
         final RecyclerView rv= (RecyclerView) findViewById(R.id.mRecycler);
         StaggeredGridLayoutManager StaggManager = new StaggeredGridLayoutManager(2, GridLayoutManager.VERTICAL);
         rv.setLayoutManager(StaggManager);

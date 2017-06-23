@@ -27,7 +27,7 @@ public class Register extends Activity {
     private HTTPURLConnection service;
     private String strname ="", strMobile ="",strAddress="";
     //Initialize webservice URL
-    private String path = "http://192.168.1.7/WebServer/registrar/register.php";
+    private String path = "http://gamespm-com.stackstaging.com/WebServer/registrar/register.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
