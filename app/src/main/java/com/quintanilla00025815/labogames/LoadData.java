@@ -70,15 +70,17 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     ArrayList<ImagesJuego> images = new ArrayList<>();
 
     //String ip ="10.45.12.48";
-    String ip = "192.168.1.3";
+    //String ip = "192.168.1.3";
+
+    String ip = "gamespm-com.stackstaging.com";
 
     //URLS para acceder a Webserver
-    String url_images_games="http://"+ip+"/WebServer/imagenes/games_icons/";
-    String url_images_players="http://"+ip+"/WebServer/imagenes/players_img/";
-    String url_images_lol="http://"+ip+"/WebServer/imagenes/Lol_img/";
-    String url_images_dota="http://"+ip+"/WebServer/imagenes/Dota_img/";
-    String url_images_csgo="http://"+ip+"/WebServer/imagenes/CSGO_img/";
-    String url_images_games2="http://"+ip+"/WebServer/imagenes/games_images/";
+    String url_images_games="http://"+ip+"/WebServer/Imagenes/games_icons/";
+    String url_images_players="http://"+ip+"/WebServer/Imagenes/players_img/";
+    String url_images_lol="http://"+ip+"/WebServer/Imagenes/Lol_img/";
+    String url_images_dota="http://"+ip+"/WebServer/Imagenes/Dota_img/";
+    String url_images_csgo="http://"+ip+"/WebServer/Imagenes/CSGO_img/";
+    String url_images_games2="http://"+ip+"/WebServer/Imagenes/games_images/";
 
     //URLS para acceder a php
     String url_game="http://"+ip+"/WebServer/informacionjuego.php?namegame=";
