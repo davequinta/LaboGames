@@ -179,7 +179,7 @@ public class Login extends AppCompatActivity {
             }else if (result.equalsIgnoreCase("false")){
 
                 // If username and password does not match display a error message
-                Toast.makeText(Login.this, "Invalid email or password", Toast.LENGTH_LONG).show();
+                Toast.makeText(Login.this, "Invalid user or password", Toast.LENGTH_LONG).show();
 
 
             } else if (result.equalsIgnoreCase("exception") || result.equalsIgnoreCase("unsuccessful")) {
