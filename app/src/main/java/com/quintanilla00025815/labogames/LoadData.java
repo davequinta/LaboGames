@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import android.net.Uri;
 
 import com.github.snowdream.android.widget.SmartImageView;
-import com.quintanilla00025815.noticias.noticias.StaggeredGridLayoutAdapter;
+import com.quintanilla00025815.noticias.noticias.*;
 
 /**
  * Created by hmanr on 17/6/2017.
@@ -70,7 +70,12 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     //Arreglo de jugadores
 
     ArrayList<Player> jugadores = new ArrayList<>();
+
+    //Arreglo de imagenes
     ArrayList<ImagesJuego> images = new ArrayList<>();
+
+    //Arreglo de noticias
+    ArrayList<News> news =new ArrayList<>();
 
     //String ip ="10.45.12.48";
     //String ip = "192.168.1.3";
@@ -84,6 +89,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     String url_images_dota="http://"+ip+"/WebServer/Imagenes/Dota_img/";
     String url_images_csgo="http://"+ip+"/WebServer/Imagenes/CSGO_img/";
     String url_images_games2="http://"+ip+"/WebServer/Imagenes/games_images/";
+    String url_images_news="http://"+ip+"/WebServer/Imagenes/games_images/";
 
     //URLS para acceder a php
     String url_game="http://"+ip+"/WebServer/informacionjuego.php?namegame=";
@@ -319,5 +325,16 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     private void getNews(String jsoncad) throws JSONException{
         JSONArray jsonArr =new JSONArray();
         Log.d(TAG, "getNews: "+jsonArr+" and "+jsoncad+"");
+        for (int i=0;i<jsonArr.length();i++){
+            news.add(new News(jsonArr.getJSONObject(i).getInt("idNoticia"),
+                    jsonArr.getJSONObject(i).getInt("idJuego"),
+                    jsonArr.getJSONObject(i).getString("titulo"),
+                    jsonArr.getJSONObject(i).getString("subtitulo"),
+                    //Cambiar url por la de la carpeta correspondiente
+                    url_news+jsonArr.getJSONObject(i).getString("imgNoticia"),
+                    jsonArr.getJSONObject(i).getString("descNoticia")));
+        }
+        /*sAdapter =new StaggeredGridLayoutAdapter(context,R.layout.activity_news,news);
+        rView.setAdapter(sAdapter);*/
     }
 }
