@@ -78,8 +78,8 @@ public class Login extends AppCompatActivity {
             try {
 
                 // Enter URL address where your php file resides
-                url = new URL("http://192.168.1.7/WebServer/login/login.inc.php");
-
+                url = new URL("http://gamespm-com.stackstaging.com/WebServer/login/login.inc.php");
+               // gamespm-com.stackstaging.com
             } catch (MalformedURLException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -165,6 +165,7 @@ public class Login extends AppCompatActivity {
                 /* Here launching another activity when login successful. If you persist login state
                 use sharedPreferences of Android. and logout button to clear sharedPreferences.
                  */
+                Toast.makeText(Login.this, "Logueo Perfecto", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(Login.this,MainActivity.class);
                 startActivity(intent);
                 Login.this.finish();

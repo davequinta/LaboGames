@@ -7,6 +7,7 @@ package com.quintanilla00025815.noticias.noticias;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Point;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -17,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 

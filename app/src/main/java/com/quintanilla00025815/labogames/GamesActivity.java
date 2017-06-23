@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.github.snowdream.android.widget.SmartImage;
 import com.github.snowdream.android.widget.SmartImageView;
+import com.quintanilla00025815.noticias.noticias.*;
 
 import java.util.concurrent.ExecutionException;
 
@@ -102,6 +103,9 @@ public class GamesActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.news) {
+            Intent intent= new Intent(this, com.quintanilla00025815.noticias.noticias.News.class);
+           // intent.putExtra("namegame",game);
+            startActivity(intent);
 
         }else if (id == R.id.lol) {
             String game="League of Legends";
