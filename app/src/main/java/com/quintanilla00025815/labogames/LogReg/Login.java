@@ -2,6 +2,7 @@ package com.quintanilla00025815.labogames.LogReg;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -162,10 +163,15 @@ public class Login extends AppCompatActivity {
 
             if(result.equalsIgnoreCase("true"))
             {
-                /* Here launching another activity when login successful. If you persist login state
-                use sharedPreferences of Android. and logout button to clear sharedPreferences.
-                 */
+                /* SharedPreferences*/
+                SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
+                SharedPreferences.Editor editor = pref.edit();
+                editor.putString("nomUsuario", String.valueOf(etEmail));
+                editor.commit();
+
                 Toast.makeText(Login.this, "Logueo Perfecto", Toast.LENGTH_LONG).show();
+
+
                 Intent intent = new Intent(Login.this,MainActivity.class);
                 startActivity(intent);
                 Login.this.finish();
