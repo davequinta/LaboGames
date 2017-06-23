@@ -30,7 +30,7 @@ public class StaggeredGridLayoutAdapter extends CustomRecyclerViewAdapter {
     private ArrayList<NoticiasClass> noticias;
     private int screenWidth;
     private int screenHeight;
-
+    static final String TITULO="titulo", SUBTITULO="subtitulo", DESC="descripcion", IMG="imagen";
     private static final int TYPE_FULL = 0;
     private static final int TYPE_HALF = 1;
 
@@ -80,7 +80,7 @@ public class StaggeredGridLayoutAdapter extends CustomRecyclerViewAdapter {
                         case TYPE_HALF:
 
                             sglp.setFullSpan(false);
-                            sglp.width = 545;
+                            sglp.width = (view.getWidth()/2)+200;
                             break;
                     }
 
