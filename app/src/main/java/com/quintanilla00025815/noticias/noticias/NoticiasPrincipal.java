@@ -30,6 +30,16 @@ public class NoticiasPrincipal extends AppCompatActivity {
         d.execute();
         
         */
+        /*
+        String news="news";
+                try {
+            new LoadData(this.getContext(),StaggManager,rv,"",news).execute().get();
+        }catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException f) {
+            f.printStackTrace();
+        }
+        * */
         rv.setAdapter(new StaggeredGridLayoutAdapter(this, Noticias));
     }
 }

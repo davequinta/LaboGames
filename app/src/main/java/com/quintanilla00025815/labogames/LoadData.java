@@ -78,9 +78,9 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     ArrayList<News> news =new ArrayList<>();
 
     //String ip ="10.45.12.48";
-    //String ip = "192.168.1.3";
+    String ip = "192.168.0.19";
 
-    String ip = "gamespm-com.stackstaging.com";
+    //String ip = "gamespm-com.stackstaging.com";
 
     //URLS para acceder a Webserver
     String url_images_games="http://"+ip+"/WebServer/Imagenes/games_icons/";
@@ -89,7 +89,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     String url_images_dota="http://"+ip+"/WebServer/Imagenes/Dota_img/";
     String url_images_csgo="http://"+ip+"/WebServer/Imagenes/CSGO_img/";
     String url_images_games2="http://"+ip+"/WebServer/Imagenes/games_images/";
-    String url_images_news="http://"+ip+"/WebServer/Imagenes/games_images/";
+    String url_images_news="http://"+ip+"/WebServer/Imagenes/news_images/";
 
     //URLS para acceder a php
     String url_game="http://"+ip+"/WebServer/informacionjuego.php?namegame=";
