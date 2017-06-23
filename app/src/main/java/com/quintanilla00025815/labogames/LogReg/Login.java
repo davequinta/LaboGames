@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.quintanilla00025815.labogames.MainActivity;
 import com.quintanilla00025815.noticias.noticias.NoticiasPrincipal;
 import com.quintanilla00025815.labogames.R;
 
@@ -77,7 +78,7 @@ public class Login extends AppCompatActivity {
             try {
 
                 // Enter URL address where your php file resides
-                url = new URL("http://192.168.1.7/WebService/login/login.inc.php");
+                url = new URL("http://192.168.1.7/WebServer/login/login.inc.php");
 
             } catch (MalformedURLException e) {
                 // TODO Auto-generated catch block
@@ -164,7 +165,7 @@ public class Login extends AppCompatActivity {
                 /* Here launching another activity when login successful. If you persist login state
                 use sharedPreferences of Android. and logout button to clear sharedPreferences.
                  */
-                Intent intent = new Intent(Login.this,SuccessActivity.class);
+                Intent intent = new Intent(Login.this,MainActivity.class);
                 startActivity(intent);
                 Login.this.finish();
 
