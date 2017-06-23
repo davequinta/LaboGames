@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:scrollbarAlwaysDrawVerticalTrack="true"
     android:isScrollContainer="true">
-    <ImageView
+    <com.github.snowdream.android.widget.SmartImageView
         android:layout_width="wrap_content"
         android:layout_height="250dp"
         android:id="@+id/NewsImg"
