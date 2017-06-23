@@ -24,6 +24,8 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+import com.quintanilla00025815.noticias.noticias.NoticiasPrincipal;
+
 public class TabbedGames extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener  {
 
     /**
@@ -174,8 +176,8 @@ public class TabbedGames extends AppCompatActivity implements NavigationView.OnN
         int id = item.getItemId();
 
         if (id == R.id.news) {
-
-
+            Intent intent = new Intent(this, NoticiasPrincipal.class);
+            startActivity(intent);
         } else if (id == R.id.lol) {
             String game="League%20of%20Legends";
             Intent intent= new Intent(this,TabbedGames.class);

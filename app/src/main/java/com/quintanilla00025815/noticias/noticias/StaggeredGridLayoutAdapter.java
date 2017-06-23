@@ -84,12 +84,12 @@ public class StaggeredGridLayoutAdapter extends CustomRecyclerViewAdapter {
                         case TYPE_HALF:
 
                             sglp.setFullSpan(false);
-                            sglp.width = (view.getWidth()/2)+200;
+                            sglp.width = (screenWidth/2)-5;
                             break;
                     }
 
                     //Alto del item
-                    sglp.height = 500;
+                    sglp.height = screenHeight/3;
 
                     view.setLayoutParams(sglp);
 

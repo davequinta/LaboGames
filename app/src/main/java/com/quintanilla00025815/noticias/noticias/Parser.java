@@ -65,7 +65,7 @@ public class Parser extends AsyncTask<Void,Integer,Integer> {
                 String subtitulo=jo.getString("subtitulo");
                 int idNoticia=jo.getInt("idNoticia");
                 int idJuego=jo.getInt("idJuego");
-                String imgNoticia="http://192.168.1.7/WebServer/Imagenes/noticias/"+jo.getString("imgNoticia");
+                String imgNoticia="http://gamespm-com.stackstaging.com/WebServer/noticias/"+jo.getString("imgNoticia");
                 String descNoticia=jo.getString("descNoticia");
                 players.add(new NoticiasClass(idNoticia,titulo,subtitulo,imgNoticia,idJuego,descNoticia));
             }

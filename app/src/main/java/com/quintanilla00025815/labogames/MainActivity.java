@@ -18,6 +18,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.quintanilla00025815.noticias.noticias.NoticiasPrincipal;
+
 import org.json.JSONArray;
 
 import java.io.BufferedInputStream;
@@ -107,8 +109,8 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.news) {
-
-
+            Intent intent = new Intent(this, NoticiasPrincipal.class);
+            startActivity(intent);
         } else if (id == R.id.lol) {
             String game="League%20of%20Legends";
             Intent intent= new Intent(this,TabbedGames.class);
